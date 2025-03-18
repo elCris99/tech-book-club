@@ -1,0 +1,32 @@
+@use "../abstracts/" as *;
+
+.hero{
+    padding-block: $hero-padding-block-small;
+    background-image: url(/assets/images/pattern-light-bg.svg);
+    background-color: $color-neutral-100;
+
+    @include mq(medium){
+        padding-block: $hero-padding-block-medium;
+        @include custom-bc;
+    }
+
+    &__header{
+        @include responsive-spacing(margin-block-end, $hero-header-margin-block-end...)
+    }
+
+     &__inner{
+        display: grid;
+        gap: $hero-inner-gap;
+
+        @include mq(large){
+            grid-template-columns: minmax(0, 570px) minmax(0, 540px);
+            align-items: center;
+        }
+
+        h1 {
+            background: linear-gradient(107deg, #FF9A60 -11.37%, #062630 61.84%);;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+    }
+}  

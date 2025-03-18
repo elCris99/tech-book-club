@@ -1,0 +1,49 @@
+@use "../abstracts/" as *;
+
+.community{
+    
+    &__inner{
+        display: grid;
+        position: relative;
+
+        @include responsive-spacing(gap, $community-inner-gap...);
+        @include mq(large){
+            grid-template-columns: minmax(0, 530px) minmax(0, 560px);
+        }
+
+        .logos-container{
+            display: none;
+            @include mq(medium){
+                display: block;
+                position: absolute;
+                bottom: 3.125rem;
+                right: 3.125rem;
+            }
+            @include mq(large){
+                bottom: $size-8;
+                right:unset;
+                right: 50%;     
+                transform: translateX(70%);
+            }
+        }
+    }
+
+    .key-word{
+        position: relative;
+        display: inline-block;
+ 
+        &::before{
+            position: absolute;
+            content: "";
+            top: -10px;
+            left: -10px;
+            width: 125%;
+            height: 140%;
+            background-image: url(/assets/images/pattern-circle.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -1;
+        }
+    }
+} 

@@ -1,0 +1,68 @@
+@use "../abstracts/" as *;
+
+.site-footer {
+  background-color: $footer-background-color;
+  background-image: url(/assets/images/pattern-dark-bg.svg);
+  color: $footer-text-color;
+  border-top-right-radius: $size-4;
+  border-top-left-radius: $size-4;
+
+  &__inner{
+    display: grid;
+    gap: $size-11;
+    @include responsive-spacing(padding-block-start, $footer-padding-block-start...)
+  }
+
+  &__body{
+    max-width: 753px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $size-9;
+  }
+
+  &__links{
+    padding-block: $size-6;
+    padding-inline: $size-8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: $size-4;
+    position: relative;
+    @include text-preset(set-4);
+
+    &::before{
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      background-color: $color-primary-700;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      @include mq(medium){
+        left: calc($container-min-margin-inline-medium * -1);
+        right: calc($container-min-margin-inline-medium * -1);
+      }
+      @include mq(large){
+        left: 0;
+        right: 0;
+      }
+    }
+
+    @include mq(medium){
+      flex-direction: row;
+      justify-content: space-between;
+      padding-inline: 0;
+    }
+  }
+
+  .social-logos{
+    display: flex;
+    align-items: center;
+    gap: $size-6;
+  }
+
+}

@@ -1,0 +1,86 @@
+@use "../abstracts/" as *;
+
+
+.membership{
+    &__inner{
+        display: grid;
+        @include responsive-spacing(gap, $membership-inner-gap...);
+    }
+
+    h2{
+        @include mq(large){
+            text-align: center;
+        }
+    }
+
+    &__options{
+        display: flex;
+        flex-direction: column;
+        gap: $membership-options-gap;
+
+         @include mq(medium){
+            flex-direction: row;
+            flex-wrap: wrap;
+            & > *{
+                flex-basis: $membership-tier-width-medium;
+                flex-grow: 1;
+                max-width: calc(50% - calc($membership-options-gap / 2));
+             }
+         }
+         @include mq(large){
+            align-items: center;
+            & > *{
+                flex-basis: 286px;
+             }
+         }
+    }
+
+    &__tier{
+        border: 2px solid $color-neutral-200;
+        border-radius: $size-2;
+        padding: $membership-padding-small;
+        display: grid;
+        gap: $membership-tier-gap;
+
+        .hl{
+            height: 2px;
+            background-color: $color-neutral-200;
+        }
+
+        &-text{
+            display: grid;
+            gap: $membership-tier-text-gap;
+        }
+
+        &-title{
+            @include text-preset(set-1);
+            color: $color-primary-900;
+        }
+        &-price{
+            display: flex;
+            align-items: center;
+            color: $color-primary-900;
+            @include text-preset(set-heading-3);
+            
+            span{
+                @include text-preset(set-2);
+                font-weight: $font-weight-default;
+                color: $color-primary-700;
+                margin-inline-start: $size-2;
+            }
+        }
+
+    }
+
+    &__tier[data-type="accent"]{
+        background-image: url(/assets/images/pattern-glow.svg);
+        background-color: $color-neutral-100;
+        background-size: 200% 200%; 
+        background-position: top left;
+        background-repeat: no-repeat;
+        @include mq(large){
+            padding: $membership-padding-large;
+            flex-basis: 350px;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+@use "../abstracts/" as *;
+
+.journey{
+    
+    &__inner{
+        padding: $journey-inner-padding-small;
+        border-radius: $size-3;
+        display: grid;
+        color: $journey-color;
+        @include text-preset(set-3);
+        @include custom-bc;
+        @include responsive-spacing(gap, $journey-inner-gap...);
+        
+        @include mq(medium){
+            padding: $journey-inner-padding-medium;
+        }
+
+        @include mq(large){
+            padding: $journey-inner-padding-large;
+            h2{
+                max-width: 32rem;
+                text-align: center;
+                margin: auto;
+            }
+        }
+    }
+
+
+    ol{
+        list-style: none;
+        counter-reset: my-counter;
+        display: grid;
+        @include responsive-spacing(gap, $journey-ol-gap...);
+
+        @include mq(large){
+             grid-template-columns: repeat(auto-fit, 14rem);
+             justify-content: center;
+        }
+    }
+    li{
+        counter-increment: my-counter;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        @include responsive-spacing(gap, $journey-li-gap...);
+
+        &::before{
+            content: counter(my-counter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: $size-8;
+            height: $size-8;
+            border: 2px solid $color-primary-900;
+            border-radius: 5px;
+        }
+
+        &:where(:not(:last-child)):after{
+            content: "";
+            position: absolute;
+            width: $size-11;
+            height: $size-5;
+            top: 0;
+            right: 0;
+            background-image: url(/assets/images/pattern-arrow.svg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: none;
+
+            @include mq(large){
+                display: block;
+            }
+        }
+    }
+}

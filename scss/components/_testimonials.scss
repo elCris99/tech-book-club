@@ -1,0 +1,22 @@
+@use "../abstracts/" as *;
+
+.testimonials{
+    .testimonial{
+        display: grid;
+        gap: $testimonials-gap;
+
+        &__text{
+            @include text-preset(set-heading-3);
+            color: $color-primary-900;
+        }
+        &__author{
+            @include text-preset(set-2);
+            font-weight: $font-weight-default;
+        }
+
+        @include mq(large){
+            text-align: center;
+            justify-items: center;
+        }
+    }
+}

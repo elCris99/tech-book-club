@@ -1,0 +1,30 @@
+@use "../abstracts/" as *;
+
+.advantages{
+    &__inner{
+        display: grid;
+        @include responsive-spacing(gap, $advantages-inner-gap);
+        
+        @include mq(large){
+            grid-template-columns: minmax(0,560px) minmax(0, 530px);
+            grid-template-areas: "two one";
+            align-items: center;
+
+            &>:nth-child(1){
+                grid-area: one;
+            }
+            &>:nth-child(2){
+                grid-area: two;
+            }
+        }
+    }
+
+    &__text{
+        display: grid;
+        align-content: center;
+        gap: $advantages-text-gap-small;
+        @include mq(medium){
+            gap: $advantages-text-gap-medium;
+        }
+    }
+}

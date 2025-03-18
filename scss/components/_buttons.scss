@@ -1,0 +1,53 @@
+@use "../abstracts" as *;
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: $button-text-transform;
+  padding: $button-padding-small;
+  border: $button-border;
+  border-radius: $button-border-radius;
+  transition: 50ms ease;
+  gap: 1rem;
+  @include text-preset(set-3);
+  
+  @include mq(medium){
+    padding: $button-padding-medium;
+  }
+
+  &[data-type="outline"] {
+    background-color: $button-outline-background;
+    color: $button-outline-color;
+    border: 2px solid $color-primary-900;
+
+    &:hover {
+      background: linear-gradient(90deg, #FFE2D1 0%, #FFF5EF 100%); 
+      color: $button-outline-color-hover;
+    }
+    &:focus {
+      background: linear-gradient(90deg, #FFE2D1 0%, #FFF5EF 100%); 
+      outline: 2px solid $color-primary-700;
+      outline-offset: 2px;
+      color: $button-outline-color-hover;
+    }
+  }
+  &[data-type="outline-transparent"] {
+    color: $button-outline-transparent-color;
+    background: $button-outline-transparent-background;
+    border: 2px solid $button-outline-transparent-color;
+
+    &:hover {
+      background: $button-outline-transparent-background-hover; 
+      color: $button-outline-transparent-color-hover;
+    }
+    &:focus {
+      background: $button-outline-transparent-background-hover; 
+      outline: 2px solid $color-neutral-000;
+      outline-offset: 2px;
+      color: $button-outline-transparent-color-hover;
+    }
+  }
+}

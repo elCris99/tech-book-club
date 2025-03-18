@@ -1,0 +1,41 @@
+@use "../abstracts/" as *;
+
+
+.ul{
+    list-style: none;   
+    display: grid;
+    row-gap: $ul-row-gap;
+
+    li {
+        background-image: url('/assets/images/icon-check.svg');
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 2.625rem; 
+    }
+}
+
+.ul[data-type="responsive"]{
+    @include mq(medium){
+        row-gap: $ul-row-gap-medium;
+    }
+}
+
+.ol {
+    list-style: none; 
+    counter-reset: my-counter; /* Inizializza il contatore */
+
+    li {
+        counter-increment: my-counter; /* Incrementa il contatore */
+        position: relative;
+        padding-left: $ol-li-padding-left; /* Allontana il testo dal numero */
+
+        &::before {
+            content: counter(my-counter) "."; /* Aggiunge il numero manualmente */
+            position: absolute;
+            left: 0;
+            /* width: 20px; */ /* Controlla la distanza tra numero e testo */
+            /* text-align: right; */
+            font-weight: bold;
+        }
+    }
+}

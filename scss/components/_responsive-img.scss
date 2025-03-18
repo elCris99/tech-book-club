@@ -1,0 +1,30 @@
+@use "../abstracts/" as *;
+
+.responsive-img{
+    img{
+        border-radius: 10px;
+        
+        &[data-type="medium"]{
+          display: none;
+        }
+        &[data-type="large"]{
+          display: none;
+        }
+        @include mq(medium){
+          &[data-type="small"]{
+            display: none;
+          }
+          &[data-type="medium"]{
+            display: block;
+          }
+        }
+        @include mq(medium){
+          &[data-type="medium"]{
+            display: none;
+          }
+          &[data-type="large"]{
+            display: block;
+          }
+        }
+      }
+}

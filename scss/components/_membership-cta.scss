@@ -1,0 +1,22 @@
+@use "../abstracts/" as *;
+
+.membership-cta{
+    max-width: 24.25rem;
+    display: flex;
+    flex-direction: column;
+
+    & > *:where(:not(:first-child)) {
+        margin-top: var(--flow-spacer, $membership-cta-gap);
+    }
+
+    .reviews{
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        column-gap: $size-3;
+        align-items: center;
+    }
+
+    p{
+        @include text-preset(set-4);
+    }
+}
